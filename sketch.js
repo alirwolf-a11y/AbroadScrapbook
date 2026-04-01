@@ -1,7 +1,16 @@
+let img;
+
+// Load the image.
+function preload() {
+  img = loadImage('background.png');
+}
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background('pink');
+  background(200);
+  
+  //background image
+   image(img, 0, 0, width, height);
 }
