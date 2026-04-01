@@ -4,22 +4,19 @@ let img3;
 
 // Load the image.
 function preload() {
-  img = loadImage('background.png');
-  img2 = loadImage('title.png');
-  img3 = loadImage('map.png');
+  img = loadImage('img/background.png');
+  img2 = loadImage('img/title.png');
+  img3 = loadImage('img/map.png');
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(200);
-  
-  //background image
-   image(img, 0, 0, width, height);
-  
+  background(img);
+    
   //title
-  image(img2, 250, 50);
+  image(img2, width/10, 50);
   
   //map
   image(img3, 700, 10);
