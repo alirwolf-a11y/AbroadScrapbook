@@ -10,7 +10,7 @@ let img8;
 // Load the image.
 function preload() {
   img = loadImage('background.png');
-  img2 = loadImage('madrid.png');
+  img2 = loadImage('Madrid.png');
   img3 = loadImage('mad_date.png');
   img4 = loadImage('Mad_notes1.png');
   img5 = loadImage('Mad_notes2.png');
