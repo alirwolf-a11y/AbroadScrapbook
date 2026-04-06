@@ -10,6 +10,11 @@ function preload() {
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  let link;
+  link = createA('madrid.html', 'pin');
+  link.position(200, 200);
+
 }
 
 function draw() {
@@ -20,4 +25,5 @@ function draw() {
   
   //map
   image(img3, 700, 10);
+
 }
