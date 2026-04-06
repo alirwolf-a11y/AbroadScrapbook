@@ -1,11 +1,13 @@
 let bgImg;
 
 function preload() {
-  bgImg = loadImage('homebackground.png');
+  bgImg = loadImage('img/homebackground.png');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  link = createA('madrid.html', '<img src="pin.png" width="100px">')
+
 }
 
 function draw() {
