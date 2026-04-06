@@ -1,52 +1,43 @@
-let img;
-let img2;
-let img3;
-let img4;
-let img5;
-let img6;
-let img7;
-let img8;
+let bgImg;
 
-// Load the image.
 function preload() {
-  img = loadImage('background.png');
-  img2 = loadImage('Madrid.png');
-  img3 = loadImage('mad_date.png');
-  img4 = loadImage('Mad_notes1.png');
-  img5 = loadImage('Mad_notes2.png');
-  img6 = loadImage('Mad_pic1.png');
-  img7 = loadImage('Mad_pic2.png');
-  img8 = loadImage('pin.png');
-
+  bgImg = loadImage('madrid.png');
 }
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(200);
+  // Create a p5 element for the background image and add width and height as methods. This allows it to always cover the canvas 
+  let imgRatio = bgImg.width / bgImg.height;
   
-  //background image
-   image(img, 0, 0, width, height);
+  // here you define the aspect ratio of the canvas
+  let canvasRatio = width / height;
   
-  //title
-  image(img2, 250, 50);
+  // here you are creating variables that can be used to adjust the background image to the canvas ratio
+  let drawW, drawH, drawX, drawY;
   
-  //date
-  image(img3, 500, 50);
+  if (canvasRatio > imgRatio) {
+    // if the canvas is wider than image ratio then fit to width
+    drawW = width;
+    drawH = width / imgRatio;
+  } else {
+    // if the canvas is taller than image ratio — fit to height
+    drawH = height;
+    drawW = height * imgRatio;
+}
+
+// centers the image to the canvas
+  drawX = (width - drawW) / 2;
+  drawY = (height - drawH) / 2;
   
-  //notes
-  image(img4, 700, 100);
+  //draws the image to align with the center and be as tall as the width and height of the canvas
+  image(bgImg, drawX, drawY, drawW, drawH);
   
-  //notes2
-  image(img5, 100, 500);
-  
-  //pic
-  image(img6, 700, 500);
-  
-  //pic2
-  image(img7, 100, 100);
-    
-  //pin
-  image(img8, 900, 900);
+}
+
+//this resizes the canvas to the width and height of the browser window
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
