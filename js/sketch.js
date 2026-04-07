@@ -6,7 +6,8 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  link = createA('madrid.html', '<img src="pin.png" width="100px">')
+  let myLink = createA('https://alirwolf-a11y.github.io/AbroadScrapbook/madrid.html', 'Visit p5.js', '_blank');
+  myLink.position(10, 10);
 
 }
 
