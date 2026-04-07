@@ -6,8 +6,9 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  let myLink = createA('https://alirwolf-a11y.github.io/AbroadScrapbook/madrid.html', 'Visit p5.js', '_blank');
-  myLink.position(10, 10);
+  
+  let myLink = createA('https://alirwolf-a11y.github.io/AbroadScrapbook/madrid.html', 'travel', '_blank');
+  myLink.position(100, 100);
 
 }
 
