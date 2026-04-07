@@ -1,7 +1,7 @@
 let bgImg;
 
 function preload() {
-  bgImg = loadImage('madrid.png');
+  bgImg = loadImage('img/madrid.png');
 }
 
 function setup() {
