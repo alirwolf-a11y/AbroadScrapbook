@@ -6,9 +6,22 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
-  let myLink = createA('https://alirwolf-a11y.github.io/AbroadScrapbook/madrid.html', 'travel', '_blank');
-  myLink.position(100, 100);
+
+   button = createButton("madrid");
+  button.position(550, 400);
+  button.size(1, 1);
+  button.style("font-size", "10px");
+  button.mousePressed(() => {
+    window.location.href = "/madrid.html";
+  });
+
+   button = createButton("london");
+  button.position(700, 200);
+  button.size(1, 1);
+  button.style("font-size", "10px");
+  button.mousePressed(() => {
+    window.location.href = "/london.html";
+  });
 
 }
 
