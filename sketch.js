@@ -12,7 +12,7 @@ function setup() {
   button.size(1, 1);
   button.style("font-size", "10px");
   button.mousePressed(() => {
-    window.location.href = "/madrid.html";
+    window.location.href = "madrid.html";
   });
 
    button = createButton("london");
@@ -20,7 +20,7 @@ function setup() {
   button.size(1, 1);
   button.style("font-size", "10px");
   button.mousePressed(() => {
-    window.location.href = "/london.html";
+    window.location.href = "london.html";
   });
 
 }
