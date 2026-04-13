@@ -6,7 +6,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
+ // madrid button
   button = createButton("madrid");
   button.position(550, 400);
   button.size(1, 1);
@@ -14,7 +14,7 @@ function setup() {
   button.mousePressed(() => {
     window.location.href = "madrid.html";
   });
-
+  // london button
   button = createButton("london");
   button.position(700, 200);
   button.size(1, 1);
@@ -44,12 +44,12 @@ function draw() {
     drawW = height * imgRatio;
   }
 
-  // // centers the image to the canvas
+  // centers the image to the canvas
   drawX = (width - drawW) / 2;
   drawY = (height - drawH) / 2;
 
-  //   //draws the image to align with the center and be as tall as the width and height of the canvas
-  image(bgImg, 0, 0);
+  //draws the image to align with the center and be as tall as the width and height of the canvas
+   image(bgImg, drawX, drawY, drawW, drawH);
 }
 
 //this resizes the canvas to the width and height of the browser window
