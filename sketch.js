@@ -20,7 +20,7 @@ function setup() {
   button.size(1, 1);
   button.style("font-size", "10px");
   button.mousePressed(() => {
-    window.location.href = "london.html";
+    window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/london.html";
   });
 
 }
