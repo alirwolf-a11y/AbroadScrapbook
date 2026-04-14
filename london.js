@@ -1,22 +1,3 @@
-/**
-Typewriter + Background Image (Small Text Area)
-*/
-
-let string = `
-London favs!!
-
-Bars & Food: 
-Nancy’s pub, redLion, Borough market 
-
-Things to do: 
-See Big Ben, National gallery, Royal palace, London eye 
-
-Rating: 5/10
-`;
-
-let currentCharacter = 0;
-
-// Background image
 let bgImg;
 
 function preload() {
@@ -28,50 +9,34 @@ function setup() {
 }
 
 function draw() {
-  background(220);
-
-  // ---------- BACKGROUND IMAGE ----------
+  // Create a p5 element for the background image and add width and height as methods. This allows it to always cover the canvas 
   let imgRatio = bgImg.width / bgImg.height;
+  
+  // here you define the aspect ratio of the canvas
   let canvasRatio = width / height;
-
+  
+  // here you are creating variables that can be used to adjust the background image to the canvas ratio
   let drawW, drawH, drawX, drawY;
-
+  
   if (canvasRatio > imgRatio) {
+    // if the canvas is wider than image ratio then fit to width
     drawW = width;
     drawH = width / imgRatio;
   } else {
+    // if the canvas is taller than image ratio — fit to height
     drawH = height;
     drawW = height * imgRatio;
   }
 
+  // centers the image to the canvas
   drawX = (width - drawW) / 2;
   drawY = (height - drawH) / 2;
-
+  
+  // draws the image to align with the center and be as tall as the width and height of the canvas
   image(bgImg, drawX, drawY, drawW, drawH);
-
-  // ---------- TYPEWRITER TEXT ----------
-  let currentString = string.substring(0, currentCharacter);
-
-  push();
-  textSize(20);
-  textFont('Courier');
-  textAlign(LEFT, TOP);
-  fill(255); // change to 0 if background is light
-
-  // 👇 POSITION + SIZE (adjust these!)
-  let x = 50;     // left/right position
-  let y = 50;     // up/down position
-  let w = 300;    // width of text box
-  let h = 200;    // height of text box
-
-  text(currentString, x, y, w, h);
-  pop();
-
-  // typing speed
-  currentCharacter += 0.5;
 }
 
-// Resize canvas with window
+// this resizes the canvas to the width and height of the browser window
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
