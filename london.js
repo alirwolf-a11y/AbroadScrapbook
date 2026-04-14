@@ -1,8 +1,7 @@
 /**
-Combined Typewriter + Background Image
+Typewriter + Background Image (Small Text Area)
 */
 
-// ---------- TYPEWRITER TEXT ----------
 let string = `
 London favs!!
 
@@ -16,9 +15,8 @@ Rating: 5/10
 `;
 
 let currentCharacter = 0;
-let pageMargin = 25;
 
-// ---------- BACKGROUND IMAGE ----------
+// Background image
 let bgImg;
 
 function preload() {
@@ -32,7 +30,7 @@ function setup() {
 function draw() {
   background(220);
 
-  // ---------- BACKGROUND IMAGE SCALING ----------
+  // ---------- BACKGROUND IMAGE ----------
   let imgRatio = bgImg.width / bgImg.height;
   let canvasRatio = width / height;
 
@@ -51,30 +49,29 @@ function draw() {
 
   image(bgImg, drawX, drawY, drawW, drawH);
 
-  // ---------- TYPEWRITER EFFECT ----------
+  // ---------- TYPEWRITER TEXT ----------
   let currentString = string.substring(0, currentCharacter);
 
-  // Paper background (so text is readable)
   push();
-  fill(255, 240); // slight transparency looks nicer over image
-  noStroke();
-  rect(pageMargin, pageMargin, width - pageMargin * 2, height - pageMargin * 2);
-  pop();
-
-  // Text
-  push();
-  textSize(24);
+  textSize(20);
   textFont('Courier');
   textAlign(LEFT, TOP);
-  fill(0);
-  text(currentString, pageMargin + 10, pageMargin + 10, width - pageMargin * 2);
+  fill(255); // change to 0 if background is light
+
+  // 👇 POSITION + SIZE (adjust these!)
+  let x = 50;     // left/right position
+  let y = 50;     // up/down position
+  let w = 300;    // width of text box
+  let h = 200;    // height of text box
+
+  text(currentString, x, y, w, h);
   pop();
 
-  // Typing speed
+  // typing speed
   currentCharacter += 0.5;
 }
 
-// ---------- RESIZE ----------
+// Resize canvas with window
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
