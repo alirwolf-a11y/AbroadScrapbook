@@ -1,3 +1,24 @@
+/**
+Combined Typewriter + Background Image
+*/
+
+// ---------- TYPEWRITER TEXT ----------
+let string = `
+London favs!!
+
+Bars & Food: 
+Nancy’s pub, redLion, Borough market 
+
+Things to do: 
+See Big Ben, National gallery, Royal palace, London eye 
+
+Rating: 5/10
+`;
+
+let currentCharacter = 0;
+let pageMargin = 25;
+
+// ---------- BACKGROUND IMAGE ----------
 let bgImg;
 
 function preload() {
@@ -6,39 +27,54 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
 }
 
 function draw() {
-  // Create a p5 element for the background image and add width and height as methods. This allows it to always cover the canvas 
+  background(220);
+
+  // ---------- BACKGROUND IMAGE SCALING ----------
   let imgRatio = bgImg.width / bgImg.height;
-  
-  // here you define the aspect ratio of the canvas
   let canvasRatio = width / height;
-  
-  // here you are creating variables that can be used to adjust the background image to the canvas ratio
+
   let drawW, drawH, drawX, drawY;
-  
+
   if (canvasRatio > imgRatio) {
-    // if the canvas is wider than image ratio then fit to width
     drawW = width;
     drawH = width / imgRatio;
   } else {
-    // if the canvas is taller than image ratio — fit to height
     drawH = height;
     drawW = height * imgRatio;
-}
+  }
 
-// centers the image to the canvas
   drawX = (width - drawW) / 2;
   drawY = (height - drawH) / 2;
-  
-  //draws the image to align with the center and be as tall as the width and height of the canvas
+
   image(bgImg, drawX, drawY, drawW, drawH);
-  
+
+  // ---------- TYPEWRITER EFFECT ----------
+  let currentString = string.substring(0, currentCharacter);
+
+  // Paper background (so text is readable)
+  push();
+  fill(255, 240); // slight transparency looks nicer over image
+  noStroke();
+  rect(pageMargin, pageMargin, width - pageMargin * 2, height - pageMargin * 2);
+  pop();
+
+  // Text
+  push();
+  textSize(24);
+  textFont('Courier');
+  textAlign(LEFT, TOP);
+  fill(0);
+  text(currentString, pageMargin + 10, pageMargin + 10, width - pageMargin * 2);
+  pop();
+
+  // Typing speed
+  currentCharacter += 0.5;
 }
 
-//this resizes the canvas to the width and height of the browser window
+// ---------- RESIZE ----------
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
