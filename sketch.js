@@ -27,6 +27,7 @@ let skydivingX, skydivingY;
 let amsterdamX, amsterdamY;
 let mallorcaX, mallorcaY;
 let ibizaX, ibizaY;
+let florenceX, florenceY;
 
 function preload() {
   // BACKGROUND IMAGE
@@ -44,59 +45,61 @@ function setup() {
   // positions are based on coordinates, then multiplied by ratio to stay responsive
 
   madridX = 840 * ratio;
-  madridY = 585 * ratio;
+  madridY = 587 * ratio;
 
-  londonX = 1030 * ratio;
-  londonY = 295 * ratio;
+  londonX = 1035 * ratio;
+  londonY = 297 * ratio;
 
   maltaX = 1290 * ratio;
   maltaY = 835 * ratio;
 
-  sevillaX = 800 * ratio; 
-  sevillaY = 650 * ratio;
+  sevillaX = 790 * ratio; 
+  sevillaY = 649 * ratio;
 
   budapestX = 1445 * ratio;
   budapestY = 495 * ratio;
   
-  valenciaX = 870 * ratio; 
-  valenciaY = 632 * ratio;
+  valenciaX = 882 * ratio; 
+  valenciaY = 634 * ratio;
 
-  moroccoX = 714 * ratio; 
-  moroccoY = 789 * ratio;
+  moroccoX = 722 * ratio; 
+  moroccoY = 790 * ratio;
 
-  dublinX = 910 * ratio; 
+  dublinX = 920 * ratio; 
   dublinY = 200 * ratio;
 
-  barcelonaX = 950 * ratio; 
-  barcelonaY = 583 * ratio;
+  barcelonaX = 958 * ratio; 
+  barcelonaY = 588 * ratio;
 
-  canaryX = 480 * ratio; 
+  canaryX = 510 * ratio; 
   canaryY = 842 * ratio;
 
-  romeX = 1295 * ratio; 
+  romeX = 1291 * ratio; 
   romeY = 629 * ratio;
 
-  amalfiX = 1257 * ratio; 
+  amalfiX = 1273 * ratio; 
   amalfiY = 679 * ratio;
 
-  interlakenX = 1190 * ratio; 
-  interlakenY = 470 * ratio;
+  interlakenX = 1192 * ratio; 
+  interlakenY = 472 * ratio;
 
-  portugalX = 710 * ratio; 
-  portugalY = 574 * ratio;
+  portugalX = 697 * ratio; 
+  portugalY = 572 * ratio;
 
-  skydivingX = 622 * ratio; 
-  skydivingY = 634 * ratio;
+  skydivingX = 630 * ratio; 
+  skydivingY = 633 * ratio;
 
-  amsterdamX = 1192 * ratio; 
-  amsterdamY = 300 * ratio;
+  amsterdamX = 1165 * ratio; 
+  amsterdamY = 299 * ratio;
 
-  mallorcaX = 1025 * ratio; 
-  mallorcaY = 680 * ratio;
+  mallorcaX = 1005 * ratio; 
+  mallorcaY = 678 * ratio;
 
-  ibizaX = 940 * ratio; 
-  ibizaY = 686 * ratio;
+  ibizaX = 938 * ratio; 
+  ibizaY = 682 * ratio;
 
+  florenceX = 1260 * ratio; 
+  florenceY = 580 * ratio;
 }
 
 function draw() {
@@ -126,7 +129,7 @@ function draw() {
   // type, size, location, color
   push();
   textFont("Courier");
-  textSize(18 * ratio);
+  textSize(12 * ratio);
   fill(0);
   textAlign(CENTER, CENTER);
 
@@ -150,6 +153,7 @@ function draw() {
   text("Amsterdam", amsterdamX, amsterdamY);
   text("Mallorca", mallorcaX, mallorcaY);
   text("Ibiza", ibizaX, ibizaY);
+  text("Florence", florenceX, florenceY);
 
   pop();
 }
@@ -230,6 +234,10 @@ function mousePressed() {
   if (dist(mouseX, mouseY, ibizaX, ibizaY) < 80 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/ibiza.html";
   }
+
+  if (dist(mouseX, mouseY, florenceX, florenceY) < 80 * ratio) {
+    window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/florence.html";
+  }
 }
 
 function windowResized() {
@@ -241,57 +249,60 @@ function windowResized() {
 
   // update text positions so everything stays aligned
 
-  madridX = 840 * ratio; 
-  madridY = 585 * ratio;
+  madridX = 840 * ratio;
+  madridY = 587 * ratio;
 
-  londonX = 1030 * ratio; 
-  londonY = 295 * ratio;
+  londonX = 1035 * ratio;
+  londonY = 297 * ratio;
 
-  maltaX = 1290 * ratio; 
+  maltaX = 1290 * ratio;
   maltaY = 835 * ratio;
 
-  sevillaX = 200 * ratio; 
-  sevillaY = 700 * ratio;
+  sevillaX = 790 * ratio; 
+  sevillaY = 649 * ratio;
 
-  budapestX = 400 * ratio; 
-  budapestY = 200 * ratio;
+  budapestX = 1445 * ratio;
+  budapestY = 495 * ratio;
+  
+  valenciaX = 882 * ratio; 
+  valenciaY = 634 * ratio;
 
-  valenciaX = 600 * ratio; 
-  valenciaY = 800 * ratio;
+  moroccoX = 722 * ratio; 
+  moroccoY = 790 * ratio;
 
-  moroccoX = 300 * ratio; 
-  moroccoY = 500 * ratio;
+  dublinX = 920 * ratio; 
+  dublinY = 200 * ratio;
 
-  dublinX = 500 * ratio; 
-  dublinY = 100 * ratio;
+  barcelonaX = 958 * ratio; 
+  barcelonaY = 588 * ratio;
 
-  barcelonaX = 900 * ratio; 
-  barcelonaY = 750 * ratio;
+  canaryX = 510 * ratio; 
+  canaryY = 842 * ratio;
 
-  canaryX = 150 * ratio; 
-  canaryY = 900 * ratio;
+  romeX = 1291 * ratio; 
+  romeY = 629 * ratio;
 
-  romeX = 1200 * ratio; 
-  romeY = 500 * ratio;
+  amalfiX = 1273 * ratio; 
+  amalfiY = 679 * ratio;
 
-  amalfiX = 1400 * ratio; 
-  amalfiY = 650 * ratio;
+  interlakenX = 1192 * ratio; 
+  interlakenY = 472 * ratio;
 
-  interlakenX = 1100 * ratio; 
-  interlakenY = 200 * ratio;
+  portugalX = 697 * ratio; 
+  portugalY = 572 * ratio;
 
-  portugalX = 250 * ratio; 
-  portugalY = 850 * ratio;
+  skydivingX = 630 * ratio; 
+  skydivingY = 633 * ratio;
 
-  skydivingX = 700 * ratio; 
-  skydivingY = 100 * ratio;
+  amsterdamX = 1165 * ratio; 
+  amsterdamY = 299 * ratio;
 
-  amsterdamX = 950 * ratio; 
-  amsterdamY = 100 * ratio;
+  mallorcaX = 1005 * ratio; 
+  mallorcaY = 678 * ratio;
 
-  mallorcaX = 1000 * ratio; 
-  mallorcaY = 700 * ratio;
+  ibizaX = 938 * ratio; 
+  ibizaY = 682 * ratio;
 
-  ibizaX = 1150 * ratio; 
-  ibizaY = 780 * ratio;
+  florenceX = 1260 * ratio; 
+  florenceY = 580 * ratio;
 }
