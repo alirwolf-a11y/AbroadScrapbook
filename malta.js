@@ -130,7 +130,7 @@ function draw() {
   textFont("Courier");
   textAlign(LEFT, TOP);
 
-    // IMAGE ARRAY LOCATION & SIZE
+    // TEXT BLURB LOCATION & SIZE
   text(
     currentString,
     700 * ratio,
@@ -167,7 +167,7 @@ function mousePressed() {
   // IMAGE CLICK INTERACTION
   // Each click cycles to the next image in the array
   index++;
-  if (index > 2) index = 0;
+  if (index > 3) index = 0;
   currentImage = pictures[index];
 
   // HOME BUTTON CLICK

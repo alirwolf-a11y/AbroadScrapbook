@@ -129,7 +129,7 @@ function draw() {
   textFont("Courier");
   textAlign(LEFT, TOP);
 
-    // IMAGE ARRAY LOCATION & SIZE
+    // TEXT BLURB LOCATION & SIZE
   text(
     currentString,
     1150 * ratio,
