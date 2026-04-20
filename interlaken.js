@@ -127,7 +127,7 @@ function draw() {
 
   //type, size, location, color
   push();
-  textSize(22 * ratio);
+  textSize(24 * ratio);
   textFont("Courier");
   textAlign(LEFT, TOP);
 
