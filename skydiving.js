@@ -1,44 +1,199 @@
+
+// LOAD BACKGROUND IMAGE
 let bgImg;
 
+// IMAGE ARRAY
+// This array stores all images that cycle when the user clicks the image
+let pictures = [];
+let currentImage;
+let index = 0;
+
+// HOME BUTTON IMAGE
+// Arrow image used for navigation back to the home page
+let homeImg;
+
+// TEXT BLURB
+// This is the text that appears with the typewriter effect
+let string = `
+Morocco favs!!
+
+Things to do:
+Viajeenmarruecos: Sahara desert camel trip, Atlas Mountains hiking tour, Argan oil factory, Ait Benhaddou
+
+Rating: 10000/10`;
+
+let currentCharacter = 0;
+
+// RESPONSIVE SCALING 
+// ratio ensures everything scales proportionally across screen sizes
+let ratio;
+const design_w = 1771;
+const design_h = 1024;
+
+// HOME BUTTON VARIABLES
+// These control the clickable home button in the bottom right corner
+let homeX, homeY, homeW, homeH;
+
 function preload() {
-  bgImg = loadImage('img/skydiving.png');
+
+  //BACKGROUND IMAGE
+  bgImg = loadImage('img/morocco.png');
+
+  // IMAGE ARRAY
+  // These images cycle when the user clicks the main image
+  pictures[0] = loadImage("img/moroccopic1.png");
+  pictures[1] = loadImage("img/moroccopic2.png");
+  pictures[2] = loadImage("img/moroccopic3.png");
+  pictures[3] = loadImage("img/moroccopic4.png");
+  pictures[4] = loadImage("img/moroccopic5.png");
+  pictures[5] = loadImage("img/moroccopic6.png");
+  pictures[6] = loadImage("img/moroccopic7.png");
+  pictures[7] = loadImage("img/moroccopic8.png");
+
+  // HOME BUTTON ARROW IMAGE
+  homeImg = loadImage("img/arrowhome.png");
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
 
+  // RESPONSIVE SCREEN SETUP
+  // ratio scales everything based on screen size
+  ratio = min(windowWidth / design_w, windowHeight / design_h);
+  createCanvas(design_w * ratio, design_h * ratio);
+
+  // Set initial image from array
+  currentImage = pictures[index];
+
+  // HOME BUTTON POSITION AND SIZE
+  homeW = 215 * ratio;
+  homeH = 215 * ratio;
+
+  // placed in bottom-right corner
+  homeX = width - homeW - (20 * ratio);
+  homeY = height - homeH;
 }
 
 function draw() {
-  // Create a p5 element for the background image and add width and height as methods. This allows it to always cover the canvas 
+  background(0);
+
+  // RESPONSIVE BACKGROUND IMAGE
+  // This ensures the background fills the screen without distortion
   let imgRatio = bgImg.width / bgImg.height;
-  
-  // here you define the aspect ratio of the canvas
   let canvasRatio = width / height;
-  
-  // here you are creating variables that can be used to adjust the background image to the canvas ratio
+
   let drawW, drawH, drawX, drawY;
-  
+
   if (canvasRatio > imgRatio) {
-    // if the canvas is wider than image ratio then fit to width
     drawW = width;
     drawH = width / imgRatio;
   } else {
-    // if the canvas is taller than image ratio — fit to height
     drawH = height;
     drawW = height * imgRatio;
-}
+  }
 
-// centers the image to the canvas
   drawX = (width - drawW) / 2;
   drawY = (height - drawH) / 2;
-  
-  //draws the image to align with the center and be as tall as the width and height of the canvas
+
+  imageMode(CORNER);
   image(bgImg, drawX, drawY, drawW, drawH);
-  
+
+  // IMAGE ARRAY LOCATION & SIZE
+  imageMode(CENTER);
+  image(
+    currentImage,
+    1285 * ratio,
+    430 * ratio,
+    400 * ratio,
+    533 * ratio
+  );
+
+  // CLICK ME TEXT 
+  //type, size, location, color
+  push();
+  textSize(34 * ratio);
+  textFont("Courier");
+  fill(0);
+  textAlign(CENTER, BOTTOM);
+
+  text(
+    "CLICK ME!-->",
+    (865 + 70) * ratio,
+    (512 - 335) * ratio
+  );
+  pop();
+
+  // TYPEWRITER TEXT BLURB
+  let currentString = string.substring(0, currentCharacter);
+
+  //type, size, location, color
+  push();
+  textSize(24 * ratio);
+  textFont("Courier");
+  textAlign(LEFT, TOP);
+
+    // TEXT BLURB LOCATION & SIZE
+  text(
+    currentString,
+    620 * ratio,
+    350 * ratio,
+    440 * ratio,
+    520 * ratio
+  );
+  pop();
+
+  currentCharacter += 0.5;
+
+  // HOME BUTTON
+  imageMode(CORNER);
+  image(homeImg, homeX, homeY, homeW, homeH);
+
+  // BACK TO HOME TEXT
+  //type, size, location, color  
+  push();
+  textSize(32 * ratio);
+  textFont("Courier");
+  fill(0);
+  textAlign(RIGHT, CENTER);
+
+  text(
+    "BACK TO HOME!",
+    homeX,
+    homeY + (homeH / 2)
+  );
+  pop();
 }
 
-//this resizes the canvas to the width and height of the browser window
+function mousePressed() {
+
+  // IMAGE CLICK INTERACTION
+  // Each click cycles to the next image in the array
+  index++;
+  if (index > 7) index = 0;
+  currentImage = pictures[index];
+
+  // HOME BUTTON CLICK
+  // Redirects user back to the home page
+  if (
+    mouseX > homeX - (180 * ratio) &&
+    mouseX < homeX + homeW &&
+    mouseY > homeY &&
+    mouseY < homeY + homeH
+  ) {
+    window.location.href =
+      "https://alirwolf-a11y.github.io/AbroadScrapbook/";
+  }
+}
+
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+
+  // RESPONSIVE RESIZE SCREEN
+  // recalculates scaling so layout stays responsive
+  ratio = min(windowWidth / design_w, windowHeight / design_h);
+  resizeCanvas(design_w * ratio, design_h * ratio);
+
+  homeW = 215 * ratio;
+  homeH = 215 * ratio;
+
+  homeX = width - homeW - (20 * ratio);
+  homeY = height - homeH;
 }
