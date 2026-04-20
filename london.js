@@ -1,10 +1,13 @@
 let bgImg;
+
+//image set
 let pictures = [];
 let currentImage;
 let index = 0;
 
 let homeImg;
 
+//text blurb
 let string = `
 London favs!!
 
@@ -23,11 +26,13 @@ let ratio;
 const design_w = 1771;
 const design_h = 1024;
 
-// home button variables
+// home button
 let homeX, homeY, homeW, homeH;
 
 function preload() {
   bgImg = loadImage('img/london.png');
+
+  // image array
   pictures[0] = loadImage("img/londonpic1.png");
   pictures[1] = loadImage("img/londonpic2.png");
   pictures[2] = loadImage("img/londonpic3.png");
@@ -36,16 +41,17 @@ function preload() {
 }
 
 function setup() {
+  // screen size
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   createCanvas(design_w * ratio, design_h * ratio);
 
+  //image array 
   currentImage = pictures[index];
 
   // home button size
   homeW = 215 * ratio;
   homeH = 215 * ratio;
 
-  // bottom-right placement
   homeX = width - homeW - (20 * ratio);
   homeY = height - homeH;
 }
@@ -53,7 +59,7 @@ function setup() {
 function draw() {
   background(0);
 
-  // ---- BACKGROUND IMAGE ----
+  // background
   let imgRatio = bgImg.width / bgImg.height;
   let canvasRatio = width / height;
 
@@ -73,7 +79,7 @@ function draw() {
   imageMode(CORNER);
   image(bgImg, drawX, drawY, drawW, drawH);
 
-  // ---- MAIN IMAGE ----
+  // image array location and size
   imageMode(CENTER);
   image(
     currentImage,
@@ -83,7 +89,7 @@ function draw() {
     464 * ratio
   );
 
-  // ---- CLICK ME TEXT ----
+  // click me text
   push();
   textSize(34 * ratio);
   textFont("Courier");
@@ -97,7 +103,7 @@ function draw() {
   );
   pop();
 
-  // ---- TYPEWRITER TEXT ----
+  // text blurb
   let currentString = string.substring(0, currentCharacter);
 
   push();
@@ -105,6 +111,7 @@ function draw() {
   textFont("Courier");
   textAlign(LEFT, TOP);
 
+  //text blurb location and size
   text(
     currentString,
     1150 * ratio,
@@ -116,11 +123,11 @@ function draw() {
 
   currentCharacter += 0.5;
 
-  // ---- HOME BUTTON ----
+  // home button arrow
   imageMode(CORNER);
   image(homeImg, homeX, homeY, homeW, homeH);
 
-  // ---- BACK TO HOME TEXT ----
+  // home button text
   push();
   textSize(32 * ratio);
   textFont("Courier");
@@ -135,7 +142,7 @@ function draw() {
   pop();
 }
 
-// ---- CLICK HANDLING ----
+// image clicking
 function mousePressed() {
 
   // cycle images
@@ -154,12 +161,11 @@ function mousePressed() {
   }
 }
 
-// ---- RESPONSIVE RESIZE ----
+// responsive resize screen
 function windowResized() {
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   resizeCanvas(design_w * ratio, design_h * ratio);
 
-  // update home button
   homeW = 215 * ratio;
   homeH = 215 * ratio;
 
