@@ -15,16 +15,15 @@ let homeImg;
 // TEXT BLURB
 // This is the text that appears with the typewriter effect
 let string = `
-Canary Islands: 
-Gran Caneria & Tenerife !!
+Rome favs!!
 
 Bars & Food:
-sunset beach bar, the couple, Casa roja, Juicy avenue, magic bar lounge, The golden glover, The mile, Savage, Palapa beach club, Hacienda Miranda
+Drunken ship, San Callisto, Nur bar, Abbeys Irish pub, Club Clara, Pops Roma, Pizzeria San Marco, Gelato, Mama eat
 
 Things to do:
-Playa de las Cantera, playa del Camison
+Casel Sant’Angelo, Spanish steps, Trevi fountain, Adrian’s temple, Pantheon, Piazza Venezia, Roman forum, Colosseum, Vatican City: St. Peter’s basilica & St. Peter’s square
 
-Rating: 8/10`;
+Rating: 10/10`;
 
 let currentCharacter = 0;
 
@@ -41,16 +40,13 @@ let homeX, homeY, homeW, homeH;
 function preload() {
 
   //BACKGROUND IMAGE
-  bgImg = loadImage('img/canaryislands.png');
+  bgImg = loadImage('img/rome.png');
 
   // IMAGE ARRAY
   // These images cycle when the user clicks the main image
-  pictures[0] = loadImage("img/canaryislandspic1.png");
-  pictures[1] = loadImage("img/canaryislandspic2.png");
-  pictures[2] = loadImage("img/canaryislandspic3.png");
-  pictures[3] = loadImage("img/canaryislandspic4.png");
-  pictures[4] = loadImage("img/canaryislandspic5.png");
-  pictures[5] = loadImage("img/canaryislandspic6.png");
+  pictures[0] = loadImage("img/romepic1.png");
+  pictures[1] = loadImage("img/romepic2.png");
+  pictures[2] = loadImage("img/romepic3.png");
 
   // HOME BUTTON ARROW IMAGE
   homeImg = loadImage("img/arrowhome.png");
@@ -103,10 +99,10 @@ function draw() {
   imageMode(CENTER);
   image(
     currentImage,
-    790 * ratio,
-    425 * ratio,
-    355 * ratio,
-    470 * ratio
+    798 * ratio,
+    473 * ratio,
+    390 * ratio,
+    550 * ratio
   );
 
   // CLICK ME TEXT 
@@ -119,8 +115,8 @@ function draw() {
 
   text(
     "CLICK ME!-->",
-    (865 - 400) * ratio,
-    (512 + 12) * ratio
+    (865 - 440) * ratio,
+    (512 - 88) * ratio
   );
   pop();
 
@@ -129,16 +125,16 @@ function draw() {
 
   //type, size, location, color
   push();
-  textSize(20 * ratio);
+  textSize(18 * ratio);
   textFont("Courier");
   textAlign(LEFT, TOP);
 
     // TEXT BLURB LOCATION & SIZE
   text(
     currentString,
-    1015 * ratio,
-    310 * ratio,
-    430 * ratio,
+    1090 * ratio,
+    225 * ratio,
+    400 * ratio,
     520 * ratio
   );
   pop();
@@ -170,7 +166,7 @@ function mousePressed() {
   // IMAGE CLICK INTERACTION
   // Each click cycles to the next image in the array
   index++;
-  if (index > 5) index = 0;
+  if (index > 2) index = 0;
   currentImage = pictures[index];
 
   // HOME BUTTON CLICK
