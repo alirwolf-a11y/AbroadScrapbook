@@ -1,4 +1,3 @@
-
 // LOAD BACKGROUND IMAGE
 let bgImg;
 
@@ -11,18 +10,6 @@ let index = 0;
 // HOME BUTTON IMAGE
 // Arrow image used for navigation back to the home page
 let homeImg;
-
-// TEXT BLURB
-// This is the text that appears with the typewriter effect
-let string = `
-Morocco favs!!
-
-Things to do:
-Viajeenmarruecos: Sahara desert camel trip, Atlas Mountains hiking tour, Argan oil factory, Ait Benhaddou
-
-Rating: 10000/10`;
-
-let currentCharacter = 0;
 
 // RESPONSIVE SCALING 
 // ratio ensures everything scales proportionally across screen sizes
@@ -37,18 +24,21 @@ let homeX, homeY, homeW, homeH;
 function preload() {
 
   //BACKGROUND IMAGE
-  bgImg = loadImage('img/morocco.png');
+  bgImg = loadImage('img/skydiving.png');
 
   // IMAGE ARRAY
   // These images cycle when the user clicks the main image
-  pictures[0] = loadImage("img/moroccopic1.png");
-  pictures[1] = loadImage("img/moroccopic2.png");
-  pictures[2] = loadImage("img/moroccopic3.png");
-  pictures[3] = loadImage("img/moroccopic4.png");
-  pictures[4] = loadImage("img/moroccopic5.png");
-  pictures[5] = loadImage("img/moroccopic6.png");
-  pictures[6] = loadImage("img/moroccopic7.png");
-  pictures[7] = loadImage("img/moroccopic8.png");
+  pictures[0] = loadImage("img/skydivingpic1.png");
+  pictures[1] = loadImage("img/skydivingpic2.png");
+  pictures[2] = loadImage("img/skydivingpic3.png");
+  pictures[3] = loadImage("img/skydivingpic4.png");
+  pictures[4] = loadImage("img/skydivingpic5.png");
+  pictures[5] = loadImage("img/skydivingpic6.png");
+  pictures[6] = loadImage("img/skydivingpic7.png");
+  pictures[7] = loadImage("img/skydivingpic8.png");
+  pictures[8] = loadImage("img/skydivingpic9.png");
+  pictures[9] = loadImage("img/skydivingpic10.png");
+  pictures[10] = loadImage("img/skydivingpic11.png");
 
   // HOME BUTTON ARROW IMAGE
   homeImg = loadImage("img/arrowhome.png");
@@ -57,7 +47,6 @@ function preload() {
 function setup() {
 
   // RESPONSIVE SCREEN SETUP
-  // ratio scales everything based on screen size
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   createCanvas(design_w * ratio, design_h * ratio);
 
@@ -77,7 +66,6 @@ function draw() {
   background(0);
 
   // RESPONSIVE BACKGROUND IMAGE
-  // This ensures the background fills the screen without distortion
   let imgRatio = bgImg.width / bgImg.height;
   let canvasRatio = width / height;
 
@@ -101,14 +89,13 @@ function draw() {
   imageMode(CENTER);
   image(
     currentImage,
-    1285 * ratio,
-    430 * ratio,
-    400 * ratio,
-    533 * ratio
+    860 * ratio,
+    545 * ratio,
+    468 * ratio,
+    351 * ratio
   );
 
   // CLICK ME TEXT 
-  //type, size, location, color
   push();
   textSize(34 * ratio);
   textFont("Courier");
@@ -117,38 +104,16 @@ function draw() {
 
   text(
     "CLICK ME!-->",
-    (865 + 70) * ratio,
-    (512 - 335) * ratio
+    (458) * ratio,
+    (759) * ratio
   );
   pop();
-
-  // TYPEWRITER TEXT BLURB
-  let currentString = string.substring(0, currentCharacter);
-
-  //type, size, location, color
-  push();
-  textSize(24 * ratio);
-  textFont("Courier");
-  textAlign(LEFT, TOP);
-
-    // TEXT BLURB LOCATION & SIZE
-  text(
-    currentString,
-    620 * ratio,
-    350 * ratio,
-    440 * ratio,
-    520 * ratio
-  );
-  pop();
-
-  currentCharacter += 0.5;
 
   // HOME BUTTON
   imageMode(CORNER);
   image(homeImg, homeX, homeY, homeW, homeH);
 
   // BACK TO HOME TEXT
-  //type, size, location, color  
   push();
   textSize(32 * ratio);
   textFont("Courier");
@@ -166,13 +131,11 @@ function draw() {
 function mousePressed() {
 
   // IMAGE CLICK INTERACTION
-  // Each click cycles to the next image in the array
   index++;
-  if (index > 7) index = 0;
+  if (index > 10) index = 0;
   currentImage = pictures[index];
 
   // HOME BUTTON CLICK
-  // Redirects user back to the home page
   if (
     mouseX > homeX - (180 * ratio) &&
     mouseX < homeX + homeW &&
@@ -186,8 +149,6 @@ function mousePressed() {
 
 function windowResized() {
 
-  // RESPONSIVE RESIZE SCREEN
-  // recalculates scaling so layout stays responsive
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   resizeCanvas(design_w * ratio, design_h * ratio);
 

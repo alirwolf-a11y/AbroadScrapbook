@@ -15,15 +15,17 @@ let homeImg;
 // TEXT BLURB
 // This is the text that appears with the typewriter effect
 let string = `
-Budapest favs!!
+Mallorca favs!!
 
-Bars & Food:
-Szimpla Kert, La siesta, Morrisons, Big fish, Eco cafe, Szabad bistro
+
+Food:
+Limit beach restaurant
 
 Things to do:
-fisherman’s bastion, Buda castle, Prosecco cruise, Szechenyi thermal bath, Salt cave, Benjakai massage
+Magaluf beach, Foot fish spa
 
-Rating: 10/10`;
+
+Rating: 7/10`;
 
 let currentCharacter = 0;
 
@@ -40,16 +42,13 @@ let homeX, homeY, homeW, homeH;
 function preload() {
 
   //BACKGROUND IMAGE
-  bgImg = loadImage('img/budapest.png');
+  bgImg = loadImage('img/mallorca.png');
 
   // IMAGE ARRAY
   // These images cycle when the user clicks the main image
-  pictures[0] = loadImage("img/budapestpic1.png");
-  pictures[1] = loadImage("img/budapestpic2.png");
-  pictures[2] = loadImage("img/budapestpic3.png");
-  pictures[3] = loadImage("img/budapestpic4.png");
-  pictures[4] = loadImage("img/budapestpic5.png");
-  pictures[5] = loadImage("img/budapestpic6.png");
+  pictures[0] = loadImage("img/mallorcapic1.png");
+  pictures[1] = loadImage("img/mallorcapic2.png");
+  pictures[2] = loadImage("img/mallorcapic3.png");
 
   // HOME BUTTON ARROW IMAGE
   homeImg = loadImage("img/arrowhome.png");
@@ -102,10 +101,10 @@ function draw() {
   imageMode(CENTER);
   image(
     currentImage,
-    830 * ratio,
-    470 * ratio,
-    414 * ratio,
-    453 * ratio
+    740 * ratio,
+    455 * ratio,
+    440 * ratio,
+    470 * ratio
   );
 
   // CLICK ME TEXT 
@@ -118,8 +117,8 @@ function draw() {
 
   text(
     "CLICK ME!-->",
-    (865 - 400) * ratio,
-    (512 + 77) * ratio
+    (370) * ratio,
+    (623) * ratio
   );
   pop();
 
@@ -135,9 +134,9 @@ function draw() {
     // TEXT BLURB LOCATION & SIZE
   text(
     currentString,
-    1105 * ratio,
-    295 * ratio,
-    450 * ratio,
+    1060 * ratio,
+    280 * ratio,
+    400 * ratio,
     520 * ratio
   );
   pop();
@@ -169,7 +168,7 @@ function mousePressed() {
   // IMAGE CLICK INTERACTION
   // Each click cycles to the next image in the array
   index++;
-  if (index > 5) index = 0;
+  if (index > 2) index = 0;
   currentImage = pictures[index];
 
   // HOME BUTTON CLICK

@@ -15,12 +15,17 @@ let homeImg;
 // TEXT BLURB
 // This is the text that appears with the typewriter effect
 let string = `
-Morocco favs!!
+Ibiza favs!!
+
+
+Clubs:
+Pacha, O beach, Hi
 
 Things to do:
-Viajeenmarruecos: Sahara desert camel trip, Atlas Mountains hiking tour, Argan oil factory, Ait Benhaddou
+playa d’en bossa
 
-Rating: 10000/10`;
+
+Rating: 100/10`;
 
 let currentCharacter = 0;
 
@@ -37,18 +42,15 @@ let homeX, homeY, homeW, homeH;
 function preload() {
 
   //BACKGROUND IMAGE
-  bgImg = loadImage('img/morocco.png');
+  bgImg = loadImage('img/ibiza.png');
 
   // IMAGE ARRAY
   // These images cycle when the user clicks the main image
-  pictures[0] = loadImage("img/moroccopic1.png");
-  pictures[1] = loadImage("img/moroccopic2.png");
-  pictures[2] = loadImage("img/moroccopic3.png");
-  pictures[3] = loadImage("img/moroccopic4.png");
-  pictures[4] = loadImage("img/moroccopic5.png");
-  pictures[5] = loadImage("img/moroccopic6.png");
-  pictures[6] = loadImage("img/moroccopic7.png");
-  pictures[7] = loadImage("img/moroccopic8.png");
+  pictures[0] = loadImage("img/ibizapic1.png");
+  pictures[1] = loadImage("img/ibizapic2.png");
+  pictures[2] = loadImage("img/ibizapic3.png");
+  pictures[3] = loadImage("img/ibizapic4.png");
+  pictures[4] = loadImage("img/ibizapic5.png");
 
   // HOME BUTTON ARROW IMAGE
   homeImg = loadImage("img/arrowhome.png");
@@ -101,10 +103,10 @@ function draw() {
   imageMode(CENTER);
   image(
     currentImage,
-    1285 * ratio,
+    1185 * ratio,
     430 * ratio,
-    400 * ratio,
-    533 * ratio
+    414 * ratio,
+    552 * ratio
   );
 
   // CLICK ME TEXT 
@@ -116,9 +118,9 @@ function draw() {
   textAlign(CENTER, BOTTOM);
 
   text(
-    "CLICK ME!-->",
-    (865 + 70) * ratio,
-    (512 - 335) * ratio
+    "<--CLICK ME!",
+    1590 * ratio,
+    655 * ratio
   );
   pop();
 
@@ -127,15 +129,15 @@ function draw() {
 
   //type, size, location, color
   push();
-  textSize(24 * ratio);
+  textSize(26 * ratio);
   textFont("Courier");
   textAlign(LEFT, TOP);
 
     // TEXT BLURB LOCATION & SIZE
   text(
     currentString,
-    620 * ratio,
-    350 * ratio,
+    560 * ratio,
+    285 * ratio,
     440 * ratio,
     520 * ratio
   );
@@ -168,7 +170,7 @@ function mousePressed() {
   // IMAGE CLICK INTERACTION
   // Each click cycles to the next image in the array
   index++;
-  if (index > 7) index = 0;
+  if (index > 4) index = 0;
   currentImage = pictures[index];
 
   // HOME BUTTON CLICK
