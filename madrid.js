@@ -1,16 +1,20 @@
+// LOAD BACKGROUND IMAGE
 let bgImg;
 
-// image set 1
+// IMAGE SET 1 (LEFT GALLERY)
+// This array stores all images for the first image set 
 let pictures1 = [];
-let index1 = 0;
-let currentImage1;
+let index1 = 0; 
+let currentImage1; 
 
-// image set 2
+// IMAGE SET 2 (RIGHT GALLERY)
+// This array stores all images for the second image set 
 let pictures2 = [];
 let index2 = 0;
 let currentImage2;
 
-// text string 1
+// TEXT STRING 1 (MADRID DESCRIPTION)
+// This is the first text string using the typewriter effect
 let string1 = `
 Madrid was my home base!!! Here are some of the things I missed the most
 
@@ -24,7 +28,8 @@ Rating: 100000/10!!!!!`;
 
 let currentCharacter1 = 0;
 
-// text string 2
+// TEXT STRING 2 (FOOD PLACES)
+// This is the second text string using the typewriter effect
 let string2 = `
 Here are some of my favorite food spots!!!
 
@@ -32,19 +37,24 @@ El Rey de los tacos, tiki taco, TKO taco, Bresca, Naked and sated, Honest greens
 
 let currentCharacter2 = 0;
 
-// responsive scaling
+// RESPONSIVE SCALING
+// This ensures everything scales proportionally on different screen sizes
 let ratio;
 const design_w = 1771;
 const design_h = 1024;
 
-// home button
+// HOME BUTTON VARIABLES
+// These control the clickable home button in the bottom right corner
 let homeImg;
 let homeX, homeY, homeW, homeH;
 
 function preload() {
+
+  //BACKGROUND IMAGE
   bgImg = loadImage('img/madrid.png');
 
-  // image set 1
+  // IMAGE SET 1 (MADRID PICS)
+  // These are photos that appear in the left image array
   pictures1[0] = loadImage("img/madridpic1.png");
   pictures1[1] = loadImage("img/madridpic2.png");
   pictures1[2] = loadImage("img/madridpic3.png");
@@ -59,7 +69,8 @@ function preload() {
   pictures1[11] = loadImage("img/madridpic12.png");
   pictures1[12] = loadImage("img/madridpic13.png");
 
-  // image set 2
+  // IMAGE SET 2 (FOOD PICS)
+  // These are photos that appear in the right image array
   pictures2[0] = loadImage("img/madridfood1.png");
   pictures2[1] = loadImage("img/madridfood2.png");
   pictures2[2] = loadImage("img/madridfood3.png");
@@ -70,22 +81,25 @@ function preload() {
   pictures2[7] = loadImage("img/madridfood8.png");
   pictures2[8] = loadImage("img/madridfood9.png");
 
+  // HOME BUTTON ARROW IMAGE
   homeImg = loadImage("img/arrowhome.png");
 }
 
 function setup() {
- // screen size
+  // RESPONSIVE SCREEN SETUP
+  // ratio scales everything based on screen size
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   createCanvas(design_w * ratio, design_h * ratio);
 
-  //image arrays
+  // Set initial image for both arrays
   currentImage1 = pictures1[index1];
   currentImage2 = pictures2[index2];
 
-  // home button size
+  // HOME BUTTON POSITION AND SIZE
   homeW = 215 * ratio;
   homeH = 215 * ratio;
 
+  // placed in bottom-right corner
   homeX = width - homeW - (20 * ratio);
   homeY = height - homeH;
 }
@@ -93,7 +107,8 @@ function setup() {
 function draw() {
   background(0);
 
-  // background
+  // RESPONSIVE BACKGROUND IMAGE
+    // ensures background image fills screen without distortion
   let imgRatio = bgImg.width / bgImg.height;
   let canvasRatio = width / height;
 
@@ -113,8 +128,7 @@ function draw() {
   imageMode(CORNER);
   image(bgImg, drawX, drawY, drawW, drawH);
 
-  // left image location and size
-  
+  // LEFT IMAGE ARRAY LOCATION & SIZE
   imageMode(CENTER);
   image(
     currentImage1,
@@ -124,7 +138,8 @@ function draw() {
     388 * ratio
   );
 
-  // click me text
+  // CLICK ME TEXT 
+  //type, size, location, color
   push();
   textSize(34 * ratio);
   textFont("Courier");
@@ -133,9 +148,10 @@ function draw() {
   text("<--CLICK ME!-->", 860 * ratio, (510 - 220) * ratio);
   pop();
 
+  // TYPEWRITER TEXT BLURB 1
   let currentString1 = string1.substring(0, currentCharacter1);
 
-// text string 1
+  //type, size, location, color
   push();
   textSize(12 * ratio);
   textFont("Courier");
@@ -145,7 +161,7 @@ function draw() {
 
   currentCharacter1 += 0.5;
 
-  // right image
+  // LEFT IMAGE ARRAY LOCATION & SIZE
   image(
     currentImage2,
     1216 * ratio,
@@ -154,9 +170,10 @@ function draw() {
     225 * ratio
   );
 
+  // TYPEWRITER TEXT BLURB 2
   let currentString2 = string2.substring(0, currentCharacter2);
 
-// text string 2
+  //type, size, location, color
   push();
   textSize(14 * ratio);
   textFont("Courier");
@@ -166,11 +183,12 @@ function draw() {
 
   currentCharacter2 += 0.5;
 
-  // home button arrow
+  // HOME BUTTON
   imageMode(CORNER);
   image(homeImg, homeX, homeY, homeW, homeH);
 
-// home button text
+  // BACK TO HOME TEXT
+  //type, size, location, color  
   push();
   textSize(32 * ratio);
   textFont("Courier");
@@ -180,10 +198,10 @@ function draw() {
   pop();
 }
 
-// image clicking
 function mousePressed() {
 
-  // left image click
+  // LEFT IMAGE CLICK DETECTION
+  // If user clicks on left image area, it cycle through pictures1
   if (
     mouseX > (500 - 150) * ratio &&
     mouseX < (500 + 150) * ratio &&
@@ -195,7 +213,8 @@ function mousePressed() {
     currentImage1 = pictures1[index1];
   }
 
-  // right image click
+  // RIGHT IMAGE CLICK DETECTION
+  // If user clicks on left image area, it cycle through pictures2
   if (
     mouseX > (1200 - 150) * ratio &&
     mouseX < (1200 + 150) * ratio &&
@@ -207,7 +226,8 @@ function mousePressed() {
     currentImage2 = pictures2[index2];
   }
 
-  // home button
+  // HOME BUTTON CLICK
+  // Redirects user back to the home page
   if (
     mouseX > homeX - (180 * ratio) &&
     mouseX < homeX + homeW &&
@@ -219,8 +239,9 @@ function mousePressed() {
   }
 }
 
-// responsive resize screen
 function windowResized() {
+  // RESPONSIVE RESIZE SCREEN
+  // recalculates scaling so layout stays responsive
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   resizeCanvas(design_w * ratio, design_h * ratio);
 

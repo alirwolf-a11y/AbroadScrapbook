@@ -1,13 +1,19 @@
+
+// LOAD BACKGROUND IMAGE
 let bgImg;
 
-//image set
+// IMAGE ARRAY
+// This array stores all images that cycle when the user clicks the image
 let pictures = [];
 let currentImage;
 let index = 0;
 
+// HOME BUTTON IMAGE
+// Arrow image used for navigation back to the home page
 let homeImg;
 
-//text blurb
+// TEXT BLURB
+// This is the text that appears with the typewriter effect
 let string = `
 London favs!!
 
@@ -21,37 +27,46 @@ Rating: 5/10`;
 
 let currentCharacter = 0;
 
-// responsive scaling
+// RESPONSIVE SCALING 
+// ratio ensures everything scales proportionally across screen sizes
 let ratio;
 const design_w = 1771;
 const design_h = 1024;
 
-// home button
+// HOME BUTTON VARIABLES
+// These control the clickable home button in the bottom right corner
 let homeX, homeY, homeW, homeH;
 
 function preload() {
+
+  //BACKGROUND IMAGE
   bgImg = loadImage('img/london.png');
 
-  // image array
+  // IMAGE ARRAY
+  // These images cycle when the user clicks the main image
   pictures[0] = loadImage("img/londonpic1.png");
   pictures[1] = loadImage("img/londonpic2.png");
   pictures[2] = loadImage("img/londonpic3.png");
 
+  // HOME BUTTON ARROW IMAGE
   homeImg = loadImage("img/arrowhome.png");
 }
 
 function setup() {
-  // screen size
+
+  // RESPONSIVE SCREEN SETUP
+  // ratio scales everything based on screen size
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   createCanvas(design_w * ratio, design_h * ratio);
 
-  //image array 
+  // Set initial image from array
   currentImage = pictures[index];
 
-  // home button size
+  // HOME BUTTON POSITION AND SIZE
   homeW = 215 * ratio;
   homeH = 215 * ratio;
 
+  // placed in bottom-right corner
   homeX = width - homeW - (20 * ratio);
   homeY = height - homeH;
 }
@@ -59,7 +74,8 @@ function setup() {
 function draw() {
   background(0);
 
-  // background
+  // RESPONSIVE BACKGROUND IMAGE
+  // This ensures the background fills the screen without distortion
   let imgRatio = bgImg.width / bgImg.height;
   let canvasRatio = width / height;
 
@@ -79,7 +95,7 @@ function draw() {
   imageMode(CORNER);
   image(bgImg, drawX, drawY, drawW, drawH);
 
-  // image array location and size
+  // IMAGE ARRAY LOCATION & SIZE
   imageMode(CENTER);
   image(
     currentImage,
@@ -89,7 +105,8 @@ function draw() {
     464 * ratio
   );
 
-  // click me text
+  // CLICK ME TEXT 
+  //type, size, location, color
   push();
   textSize(34 * ratio);
   textFont("Courier");
@@ -99,19 +116,20 @@ function draw() {
   text(
     "CLICK ME!-->",
     (865 - 350) * ratio,
-    (512 + 77) * ratio   // above image
+    (512 + 77) * ratio
   );
   pop();
 
-  // text blurb
+  // TYPEWRITER TEXT BLURB
   let currentString = string.substring(0, currentCharacter);
 
+  //type, size, location, color
   push();
   textSize(20 * ratio);
   textFont("Courier");
   textAlign(LEFT, TOP);
 
-  //text blurb location and size
+    // IMAGE ARRAY LOCATION & SIZE
   text(
     currentString,
     1150 * ratio,
@@ -123,11 +141,12 @@ function draw() {
 
   currentCharacter += 0.5;
 
-  // home button arrow
+  // HOME BUTTON
   imageMode(CORNER);
   image(homeImg, homeX, homeY, homeW, homeH);
 
-  // home button text
+  // BACK TO HOME TEXT
+  //type, size, location, color  
   push();
   textSize(32 * ratio);
   textFont("Courier");
@@ -142,27 +161,31 @@ function draw() {
   pop();
 }
 
-// image clicking
 function mousePressed() {
 
-  // cycle images
+  // IMAGE CLICK INTERACTION
+  // Each click cycles to the next image in the array
   index++;
   if (index > 2) index = 0;
   currentImage = pictures[index];
 
-  // home button click
+  // HOME BUTTON CLICK
+  // Redirects user back to the home page
   if (
     mouseX > homeX - (180 * ratio) &&
     mouseX < homeX + homeW &&
     mouseY > homeY &&
     mouseY < homeY + homeH
   ) {
-    window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/";
+    window.location.href =
+      "https://alirwolf-a11y.github.io/AbroadScrapbook/";
   }
 }
 
-// responsive resize screen
 function windowResized() {
+
+  // RESPONSIVE RESIZE SCREEN
+  // recalculates scaling so layout stays responsive
   ratio = min(windowWidth / design_w, windowHeight / design_h);
   resizeCanvas(design_w * ratio, design_h * ratio);
 
