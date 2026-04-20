@@ -1,104 +1,168 @@
 let bgImg;
-var pictures = [];
-var currentImage;
-var index = 0;
+let pictures = [];
+let currentImage;
+let index = 0;
+
+let homeImg;
+
 let string = `
 London favs!!
 
-Bars & Food: 
-Nancy’s pub, redLion, Borough market 
+Bars & Food: 
+Nancy’s pub, red Lion, Borough Market 
 
-Things to do: 
-See Big Ben, National gallery, Royal palace, London eye 
+Things to do: 
+See Big Ben, National Gallery, Royal Palace, London Eye 
 
-
-Rating: 5/10`; 
+Rating: 5/10`;
 
 let currentCharacter = 0;
-let pageMargin = 25;
+
+// responsive scaling
+let ratio;
+const design_w = 1771;
+const design_h = 1024;
+
+// home button variables
+let homeX, homeY, homeW, homeH;
 
 function preload() {
   bgImg = loadImage('img/london.png');
-   pictures[0] = loadImage("img/londonpic1.png");
+  pictures[0] = loadImage("img/londonpic1.png");
   pictures[1] = loadImage("img/londonpic2.png");
   pictures[2] = loadImage("img/londonpic3.png");
+
+  homeImg = loadImage("img/arrowhome.png");
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  ratio = min(windowWidth / design_w, windowHeight / design_h);
+  createCanvas(design_w * ratio, design_h * ratio);
+
   currentImage = pictures[index];
+
+  // home button size
+  homeW = 215 * ratio;
+  homeH = 215 * ratio;
+
+  // bottom-right placement
+  homeX = width - homeW - (20 * ratio);
+  homeY = height - homeH;
 }
 
 function draw() {
-  // Create a p5 element for the background image and add width and height as methods. This allows it to always cover the canvas 
+  background(0);
+
+  // ---- BACKGROUND IMAGE ----
   let imgRatio = bgImg.width / bgImg.height;
-  
-  // here you define the aspect ratio of the canvas
   let canvasRatio = width / height;
-  
-  // here you are creating variables that can be used to adjust the background image to the canvas ratio
+
   let drawW, drawH, drawX, drawY;
-  
+
   if (canvasRatio > imgRatio) {
-    // if the canvas is wider than image ratio then fit to width
     drawW = width;
     drawH = width / imgRatio;
   } else {
-    // if the canvas is taller than image ratio — fit to height
     drawH = height;
     drawW = height * imgRatio;
   }
 
-  // centers the image to the canvas
   drawX = (width - drawW) / 2;
   drawY = (height - drawH) / 2;
-  
-  // draws the image to align with the center and be as tall as the width and height of the canvas
+
   imageMode(CORNER);
   image(bgImg, drawX, drawY, drawW, drawH);
-  imageMode(CENTER);
-  image(currentImage, width / 2.05, height / 2, 297.4, 400);
 
-    // Work out the current string we're writing (the substring of the full string that the typewriter has written so far)
-  // The substring() method will return all the characters of a string
-  // between the starting and ending positions (starts at 0)
-  let currentString = string.substring(0, currentCharacter);
-  
-  // Draw a sheet of paper (using the pageMargin variable)
-  // push();
-  // fill(255);
-  // noStroke();
-  // rect(width/2, height/2, 400, 400);
-  // pop();
-  
-  // Draw the current string on the page, with some margins
+  // ---- MAIN IMAGE ----
+  imageMode(CENTER);
+  image(
+    currentImage,
+    865 * ratio,
+    512 * ratio,
+    345 * ratio,
+    464 * ratio
+  );
+
+  // ---- CLICK ME TEXT ----
   push();
-  textSize(14);
-  textFont(`Courier`);
-  textAlign(LEFT, TOP);
-  text(currentString, width/1.5, height/3, 300 , 400);
+  textSize(34 * ratio);
+  textFont("Courier");
+  fill(0);
+  textAlign(CENTER, BOTTOM);
+
+  text(
+    "CLICK ME!-->",
+    (865 - 350) * ratio,
+    (512 + 77) * ratio   // above image
+  );
   pop();
-  
-  // Increase the current character so that we get a longer and
-  // longer substring above. Using fractional numbers allows us to
-  // slow down the pace.
+
+  // ---- TYPEWRITER TEXT ----
+  let currentString = string.substring(0, currentCharacter);
+
+  push();
+  textSize(20 * ratio);
+  textFont("Courier");
+  textAlign(LEFT, TOP);
+
+  text(
+    currentString,
+    1150 * ratio,
+    340 * ratio,
+    400 * ratio,
+    520 * ratio
+  );
+  pop();
+
   currentCharacter += 0.5;
-  // currentCharacter += random(0,0.5); // Try adding random amounts for a more "naturalistic" pace of typing
+
+  // ---- HOME BUTTON ----
+  imageMode(CORNER);
+  image(homeImg, homeX, homeY, homeW, homeH);
+
+  // ---- BACK TO HOME TEXT ----
+  push();
+  textSize(32 * ratio);
+  textFont("Courier");
+  fill(0);
+  textAlign(RIGHT, CENTER);
+
+  text(
+    "BACK TO HOME!",
+    homeX,
+    homeY + (homeH / 2)
+  );
+  pop();
 }
 
+// ---- CLICK HANDLING ----
 function mousePressed() {
-  index = index + 1;
 
-  if (index > 2) {
-    index = 0;
-  }
-
+  // cycle images
+  index++;
+  if (index > 2) index = 0;
   currentImage = pictures[index];
 
-  console.log("picture " + (index + 1));
+  // home button click
+  if (
+    mouseX > homeX - (180 * ratio) &&
+    mouseX < homeX + homeW &&
+    mouseY > homeY &&
+    mouseY < homeY + homeH
+  ) {
+    window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/";
+  }
 }
 
-// this resizes the canvas to the width and height of the browser window
+// ---- RESPONSIVE RESIZE ----
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  ratio = min(windowWidth / design_w, windowHeight / design_h);
+  resizeCanvas(design_w * ratio, design_h * ratio);
+
+  // update home button
+  homeW = 215 * ratio;
+  homeH = 215 * ratio;
+
+  homeX = width - homeW - (20 * ratio);
+  homeY = height - homeH;
 }
