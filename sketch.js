@@ -1,6 +1,13 @@
 // LOAD BACKGROUND IMAGE
 let bgImg;
 
+// TEXT BLURB
+// This is the text that appears with the typewriter effect
+let string = `
+click on each pin to see what I did during my study abroad adventures!`;
+
+let currentCharacter = 0;
+
 // RESPONSIVE SCALING
 // ratio ensures everything scales proportionally across screen sizes
 let ratio;
@@ -125,6 +132,27 @@ function draw() {
 
   image(bgImg, drawX, drawY, drawW, drawH);
 
+  // TYPEWRITER TEXT BLURB
+  let currentString = string.substring(0, currentCharacter);
+
+  push();
+  textSize(24 * ratio);
+  textFont("Courier");
+  textAlign(LEFT, TOP);
+  fill(0);
+
+  text(
+    currentString,
+    180 * ratio,
+    603 * ratio,
+    400 * ratio,
+    520 * ratio
+  );
+
+  pop();
+
+  currentCharacter += 0.5;
+
   // CLICKABLE TEXT LABELS
   // type, size, location, color
   push();
@@ -132,8 +160,6 @@ function draw() {
   textSize(12 * ratio);
   fill(0);
   textAlign(CENTER, CENTER);
-
-  // draw text on the screen
 
   text("Madrid", madridX, madridY);
   text("London", londonX, londonY);
@@ -163,79 +189,79 @@ function mousePressed() {
   // CLICK ON EACH WORD
   // checks if mouse is within a circular area around the text, takes you to each page
 
-  if (dist(mouseX, mouseY, madridX, madridY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, madridX, madridY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/madrid.html";
   }
 
-  if (dist(mouseX, mouseY, londonX, londonY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, londonX, londonY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/london.html";
   }
 
-  if (dist(mouseX, mouseY, maltaX, maltaY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, maltaX, maltaY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/malta.html";
   }
 
-  if (dist(mouseX, mouseY, sevillaX, sevillaY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, sevillaX, sevillaY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/sevilla.html";
   }
 
-  if (dist(mouseX, mouseY, budapestX, budapestY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, budapestX, budapestY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/budapest.html";
   }
 
-  if (dist(mouseX, mouseY, valenciaX, valenciaY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, valenciaX, valenciaY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/valencia.html";
   }
 
-  if (dist(mouseX, mouseY, moroccoX, moroccoY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, moroccoX, moroccoY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/morocco.html";
   }
 
-  if (dist(mouseX, mouseY, dublinX, dublinY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, dublinX, dublinY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/dublin.html";
   }
 
-  if (dist(mouseX, mouseY, barcelonaX, barcelonaY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, barcelonaX, barcelonaY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/barcelona.html";
   }
 
-  if (dist(mouseX, mouseY, canaryX, canaryY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, canaryX, canaryY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/canaryislands.html";
   }
 
-  if (dist(mouseX, mouseY, romeX, romeY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, romeX, romeY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/rome.html";
   }
 
-  if (dist(mouseX, mouseY, amalfiX, amalfiY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, amalfiX, amalfiY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/amalficoast.html";
   }
 
-  if (dist(mouseX, mouseY, interlakenX, interlakenY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, interlakenX, interlakenY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/interlaken.html";
   }
 
-  if (dist(mouseX, mouseY, portugalX, portugalY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, portugalX, portugalY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/portugal.html";
   }
 
-  if (dist(mouseX, mouseY, skydivingX, skydivingY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, skydivingX, skydivingY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/skydiving.html";
   }
 
-  if (dist(mouseX, mouseY, amsterdamX, amsterdamY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, amsterdamX, amsterdamY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/amsterdam.html";
   }
 
-  if (dist(mouseX, mouseY, mallorcaX, mallorcaY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, mallorcaX, mallorcaY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/mallorca.html";
   }
 
-  if (dist(mouseX, mouseY, ibizaX, ibizaY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, ibizaX, ibizaY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/ibiza.html";
   }
 
-  if (dist(mouseX, mouseY, florenceX, florenceY) < 80 * ratio) {
+  if (dist(mouseX, mouseY, florenceX, florenceY) < 50 * ratio) {
     window.location.href = "https://alirwolf-a11y.github.io/AbroadScrapbook/florence.html";
   }
 }

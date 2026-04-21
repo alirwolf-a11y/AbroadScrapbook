@@ -1,4 +1,3 @@
-
 // LOAD BACKGROUND IMAGE
 let bgImg;
 
@@ -37,6 +36,11 @@ const design_h = 1024;
 // These control the clickable home button in the bottom right corner
 let homeX, homeY, homeW, homeH;
 
+// SKYDIVING CAMERA FEATURE
+// Clickable camera image that links to side quest page
+let skydivingImg;
+let skyX, skyY, skyW, skyH;
+
 function preload() {
 
   //BACKGROUND IMAGE
@@ -53,6 +57,9 @@ function preload() {
 
   // HOME BUTTON ARROW IMAGE
   homeImg = loadImage("img/arrowhome.png");
+
+  // SKYDIVING CAMERA IMAGE
+  skydivingImg = loadImage("img/skydivingcamera.png");
 }
 
 function setup() {
@@ -72,6 +79,14 @@ function setup() {
   // placed in bottom-right corner
   homeX = width - homeW - (20 * ratio);
   homeY = height - homeH;
+
+  // SKYDIVING CAMERA POSITION & SIZE
+  skyW = 134 * ratio;
+  skyH = 113 * ratio;
+
+  // placed toward bottom-left area of screen
+  skyX = 222 * ratio;
+  skyY = height - (75 * ratio);
 }
 
 function draw() {
@@ -118,8 +133,8 @@ function draw() {
 
   text(
     "<--CLICK ME!",
-    (865 + 766) * ratio,
-    (512 + 77) * ratio
+    1631 * ratio,
+    589 * ratio
   );
   pop();
 
@@ -143,6 +158,32 @@ function draw() {
   pop();
 
   currentCharacter += 0.5;
+
+// SKYDIVING CAMERA IMAGE
+imageMode(CENTER);
+image(
+  skydivingImg,
+  skyX,
+  skyY,
+  skyW,
+  skyH
+  );
+
+  // SKYDIVING TEXT NEXT TO CAMERA
+  push();
+  textSize(22 * ratio);
+  textFont("Courier");
+  fill(0);
+  textAlign(LEFT, CENTER);
+
+  text(
+    "click the camera to check out a little side quest we went on...",
+    308 * ratio,
+    893 * ratio,
+    500 * ratio,
+    113 * ratio
+  );
+  pop();
 
   // HOME BUTTON
   imageMode(CORNER);
@@ -183,6 +224,17 @@ function mousePressed() {
     window.location.href =
       "https://alirwolf-a11y.github.io/AbroadScrapbook/";
   }
+
+  // SKYDIVING CAMERA CLICK
+  if (
+    mouseX > skyX - (skyW / 2) &&
+    mouseX < skyX + (skyW / 2) &&
+    mouseY > skyY - (skyH / 2) &&
+    mouseY < skyY + (skyH / 2)
+  ) {
+    window.location.href =
+      "https://alirwolf-a11y.github.io/AbroadScrapbook/skydiving.html";
+  }
 }
 
 function windowResized() {
@@ -197,4 +249,10 @@ function windowResized() {
 
   homeX = width - homeW - (20 * ratio);
   homeY = height - homeH;
+
+  skyW = 134 * ratio;
+  skyH = 113 * ratio;
+
+  skyX = 222 * ratio;
+  skyY = height - (75 * ratio);
 }
